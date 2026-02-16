@@ -55,6 +55,18 @@ Model saved as: task2_sbert_snli_softmaxloss.pth
 
 Test Accuracy: \~41%
 
+### Classification Report (Test Set)
+
+| Class           | Precision | Recall | F1-Score | Support |
+|----------------|----------:|-------:|---------:|--------:|
+| Entailment     | 0.45      | 0.43   | 0.44     | 690     |
+| Neutral        | 0.39      | 0.61   | 0.47     | 660     |
+| Contradiction  | 0.40      | 0.18   | 0.25     | 650     |
+| **Accuracy**   |           |        | **0.41** | 2000    |
+| **Macro Avg**  | 0.41      | 0.41   | 0.39     | 2000    |
+| **Weighted Avg** | 0.41    | 0.41   | 0.39     | 2000    |
+
+
 The model performs best on the Neutral class. Contradiction recall is
 lower, likely due to: - Small architecture (2-layer BERT) - Word-level
 tokenizer - Limited training steps - CPU-based constraints
