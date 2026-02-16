@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NLI Prediction</title>
+</head>
+<body>
+  <h2>Natural Language Inference (NLI)</h2>
+
+  <form method="POST">
+    <label>Premise:</label><br>
+    <textarea name="premise" rows="4" cols="70">{{ premise }}</textarea><br><br>
+
+    <label>Hypothesis:</label><br>
+    <textarea name="hypothesis" rows="4" cols="70">{{ hypothesis }}</textarea><br><br>
+
+    <input type="submit" value="Predict">
+  </form>
+
+  {% if prediction %}
+    <h3>Prediction: {{ prediction }}</h3>
+  {% endif %}
+</body>
+</html>
