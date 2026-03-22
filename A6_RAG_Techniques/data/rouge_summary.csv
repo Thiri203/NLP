@@ -1,0 +1,3 @@
+Method,ROUGE-1,ROUGE-2,ROUGE-L
+Naive RAG,0.3943,0.1415,0.2888
+Contextual Retrieval,0.1104,0.0205,0.0858

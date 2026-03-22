@@ -68,7 +68,7 @@
   {
     "question": "What is weight tying in transformer language models?",
     "ground_truth_answer": "Weight tying refers to sharing the same weight matrix between the token embedding layer and the final unembedding layer.",
-    "naive_rag_answer": "Weight tying is a technique used in transformer language models where the linear layer's matrix is tied to the transpose of the embedding matrix E. This means the same weights are used for two different matrices in the model.",
+    "naive_rag_answer": "Weight tying in transformer language models is the practice of using the same weights for two different matrices in the model. Specifically, the linear layer used to compute the logits is tied to the transpose of the embedding matrix E.",
     "contextual_retrieval_answer": ""
   },
   {
@@ -116,7 +116,7 @@
   {
     "question": "What is the purpose of the logit lens tool?",
     "ground_truth_answer": "The logit lens is an interpretability method that applies the final unembedding layer to intermediate activations to analyze what the model is predicting at different layers.",
-    "naive_rag_answer": "The logit lens tool is a way to visualize what the internal layers of the transformer might be representing. It does this by taking any vector from any layer, multiplying it by the unembedding layer, and computing a softmax to see the distribution over words that the vector might be representing. This can be a useful trick to help us visualize the internal layers of a transformer.",
+    "naive_rag_answer": "The logit lens tool is a way to visualize what the internal layers of the transformer might be representing. It does this by taking any vector from any layer, pretending it's the pre-final embedding, multiplying it by the unembedding layer to get logits, and computing a softmax to see the distribution over words that the vector might be representing.",
     "contextual_retrieval_answer": ""
   }
 ]

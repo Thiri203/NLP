@@ -1,0 +1,150 @@
+[
+  {
+    "question": "What is the primary purpose of the self-attention mechanism in a transformer?",
+    "ground_truth_answer": "Self-attention allows a model to build contextual representations of a token by integrating information from other tokens in the sequence.",
+    "naive_rag_answer": "The primary purpose of the self-attention mechanism in a transformer is to build contextual representations of a token's meaning by attending to and integrating information from surrounding tokens, helping the model learn how tokens relate to each other over large spans.",
+    "contextual_retrieval_answer": "The primary purpose of the self-attention mechanism in a transformer is to build contextual representations of a token's meaning by attending to and integrating information from surrounding tokens, helping the model learn how tokens relate to each other over large spans.",
+    "contextual_retrieval_sources": [
+      "ther linear projection WO∈ RAdv×d to reshape it, resulting in the multi-head\nattention vector ai with the correct output shape [1× d] at each input i.\n8.2 Transformer Blocks\nThe self-attention calculation lies at the core of what’s called a transformer block,\nwhich, in addition to the self-attention layer, includes three other kinds of layers: (1)\na feedforward layer, (2) residual connections, and (3) normalizing layers (colloqui-\nally called “layer norm”).\nFig. 8.7 illustrates a transformer blo",
+      "ding and all the outputs from all\nthe previous layers and blocks.\nThe core intuition of the transformer, and the component that distinguishes it\nfrom the feedforward layers we saw in Chapter 6, is this multi-head attention layer,\nalso called a self-attention layer. Attention can be thought of as a way to build\ncontextual representations of a token’s meaning by attending to and integrating\ninformation from surrounding tokens, helping the model learn how tokens relate to\neach other over large span",
+      "e internal layers of a transformer.\n26 CHAPTER 8 • T RANSFORMERS\n8.10 Summary\nThis chapter has introduced the transformer and its components for the language\nmodeling task introduced in the previous chapter. Here’s a summary of the main\npoints that we covered:\n• Transformers are non-recurrent networks based on multi-head attention, a\nkind of self-attention. A multi-head attention computation takes an input\nvector xi and maps it to an output ai by adding in vectors from prior tokens,\nweighted by "
+    ]
+  },
+  {
+    "question": "In the attention mechanism, what roles do the query, key, and value vectors play?",
+    "ground_truth_answer": "The query represents the current token being compared, the key represents tokens used for similarity comparison, and the value contains the information that is weighted and combined in the output.",
+    "naive_rag_answer": "The query, key, and value vectors play the following roles in the attention mechanism: \n\nThe query vector is used to match keys representing content in an associative memory. \nThe key vector represents content in an associative memory. \nThe value vector is used to compute the weighted sum that is our a3.",
+    "contextual_retrieval_answer": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01km59edw5eaksgmrc9f2xwfrp` service tier `on_demand` on tokens per day (TPD): Limit 500000, Used 499994, Requested 548. Please try again in 1m33.657599999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "contextual_retrieval_sources": []
+  },
+  {
+    "question": "Why is a scaling factor used in the dot product of query and key vectors?",
+    "ground_truth_answer": "The dot product is scaled by the square root of the key dimension to prevent large values that could cause unstable gradients during training.",
+    "naive_rag_answer": "Exponentiating large values can lead to numerical issues and loss of gradients during training. To avoid this, the dot product is scaled by a factor related to the size of the embeddings, specifically by dividing by the square root of the dimensionality of the query and key vectors (dk).",
+    "contextual_retrieval_answer": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01km59edw5eaksgmrc9f2xwfrp` service tier `on_demand` on tokens per day (TPD): Limit 500000, Used 499987, Requested 499. Please try again in 1m23.9808s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "contextual_retrieval_sources": []
+  },
+  {
+    "question": "Why do transformers use multi-head attention instead of a single attention head?",
+    "ground_truth_answer": "Multi-head attention allows the model to attend to different types of relationships in the sequence simultaneously using multiple attention heads.",
+    "naive_rag_answer": "Transformers use multi-head attention instead of a single attention head because each head might be specialized to represent different linguistic relationships between context elements and the current token, or to look for particular kinds of patterns in the context. This allows for multiple purposes to be attended to in parallel.",
+    "contextual_retrieval_answer": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01km59edw5eaksgmrc9f2xwfrp` service tier `on_demand` on tokens per day (TPD): Limit 500000, Used 499981, Requested 416. Please try again in 1m8.6016s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "contextual_retrieval_sources": []
+  },
+  {
+    "question": "What components are included in a standard transformer block?",
+    "ground_truth_answer": "A transformer block includes a multi-head self-attention layer, a feedforward network, residual connections, and layer normalization.",
+    "naive_rag_answer": "A standard transformer block consists of a residual stream with the input from the prior layer passed up to the next layer, and the output of different components added to it. These components include a multi-head attention layer followed by a feedforward layer, each preceded by layer normalizations.",
+    "contextual_retrieval_answer": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01km59edw5eaksgmrc9f2xwfrp` service tier `on_demand` on tokens per day (TPD): Limit 500000, Used 499974, Requested 482. Please try again in 1m18.7968s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "contextual_retrieval_sources": []
+  },
+  {
+    "question": "What is the residual stream in a transformer block?",
+    "ground_truth_answer": "The residual stream is the pathway where token representations are passed through layers while each component reads from and adds its output back to the stream.",
+    "naive_rag_answer": "The residual stream in a transformer block is a single stream of d-dimensional representations for a token position, starting with the original input vector. It passes the input from the prior layer up to the next layer, with the output of different components added to it. These components include a multi-head attention layer followed by a feedforward layer, each preceded by layer normalizations.",
+    "contextual_retrieval_answer": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01km59edw5eaksgmrc9f2xwfrp` service tier `on_demand` on tokens per day (TPD): Limit 500000, Used 499968, Requested 422. Please try again in 1m7.391999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "contextual_retrieval_sources": []
+  },
+  {
+    "question": "How are positional embeddings combined with token embeddings in a transformer?",
+    "ground_truth_answer": "Positional embeddings are added to token embeddings so the model can represent both the token identity and its position in the sequence.",
+    "naive_rag_answer": "In a transformer, the input X is computed by adding an embedding (computed with an embedding matrix) to a positional encoding that represents the sequential position of the token in the window. This means that positional embeddings are combined with token embeddings by addition.",
+    "contextual_retrieval_answer": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01km59edw5eaksgmrc9f2xwfrp` service tier `on_demand` on tokens per day (TPD): Limit 500000, Used 499961, Requested 447. Please try again in 1m10.5024s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "contextual_retrieval_sources": []
+  },
+  {
+    "question": "What is the architecture of the feedforward layer in a transformer block?",
+    "ground_truth_answer": "The feedforward layer is a two-layer fully connected network applied independently to each token representation.",
+    "naive_rag_answer": "The architecture of the feedforward layer in a transformer block is a fully-connected 2-layer network, also known as one hidden layer, with two weight matrices.",
+    "contextual_retrieval_answer": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01km59edw5eaksgmrc9f2xwfrp` service tier `on_demand` on tokens per day (TPD): Limit 500000, Used 499955, Requested 447. Please try again in 1m9.4656s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "contextual_retrieval_sources": []
+  },
+  {
+    "question": "What is the purpose of layer normalization in transformers?",
+    "ground_truth_answer": "Layer normalization stabilizes training by normalizing activations so they have a consistent scale across the network.",
+    "naive_rag_answer": "The purpose of layer normalization in transformers is to keep the values of a hidden layer in a range that facilitates gradient-based training, improving training performance in deep neural networks.",
+    "contextual_retrieval_answer": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01km59edw5eaksgmrc9f2xwfrp` service tier `on_demand` on tokens per day (TPD): Limit 500000, Used 499948, Requested 438. Please try again in 1m6.7008s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "contextual_retrieval_sources": []
+  },
+  {
+    "question": "Why is masking used in the self-attention of causal language models?",
+    "ground_truth_answer": "Masking prevents tokens from attending to future tokens so the model only uses previous context when predicting the next token.",
+    "naive_rag_answer": "Masking is used in the self-attention of causal language models because the calculation of QK⊺ results in a score for each query value to every key value, including those that follow the query, which is inappropriate in language modeling. This is because knowing the future input can make it easy to guess the next word.",
+    "contextual_retrieval_answer": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01km59edw5eaksgmrc9f2xwfrp` service tier `on_demand` on tokens per day (TPD): Limit 500000, Used 499942, Requested 552. Please try again in 1m25.363199999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "contextual_retrieval_sources": []
+  },
+  {
+    "question": "What components make up the language modeling head?",
+    "ground_truth_answer": "The language modeling head consists of a linear projection called the unembedding layer followed by a softmax to produce probabilities over the vocabulary.",
+    "naive_rag_answer": "The language modeling head is the additional neural circuitry we add on top of the basic transformer architecture when we apply pretrained transformer models to various tasks.",
+    "contextual_retrieval_answer": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01km59edw5eaksgmrc9f2xwfrp` service tier `on_demand` on tokens per day (TPD): Limit 500000, Used 499935, Requested 429. Please try again in 1m2.8992s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "contextual_retrieval_sources": []
+  },
+  {
+    "question": "What is weight tying in transformer language models?",
+    "ground_truth_answer": "Weight tying refers to sharing the same weight matrix between the token embedding layer and the final unembedding layer.",
+    "naive_rag_answer": "Weight tying in transformer language models is the practice of using the same weights for two different matrices in the model. Specifically, the linear layer used to compute the logits is tied to the transpose of the embedding matrix E.",
+    "contextual_retrieval_answer": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01km59edw5eaksgmrc9f2xwfrp` service tier `on_demand` on tokens per day (TPD): Limit 500000, Used 499929, Requested 494. Please try again in 1m13.0944s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "contextual_retrieval_sources": []
+  },
+  {
+    "question": "How does top-k sampling work during text generation?",
+    "ground_truth_answer": "Top-k sampling restricts the probability distribution to the k most likely tokens and randomly samples the next token from that subset.",
+    "naive_rag_answer": "Top-k sampling works by first truncating the distribution to the top k most likely words, renormalizing their probabilities to produce a legitimate distribution, and then randomly sampling from within these k words according to their renormalized probabilities. This process is repeated for each word in the vocabulary, with the language model computing the likelihood of each word given the context. The top k words are then randomly selected based on their probabilities.",
+    "contextual_retrieval_answer": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01km59edw5eaksgmrc9f2xwfrp` service tier `on_demand` on tokens per day (TPD): Limit 500000, Used 499922, Requested 479. Please try again in 1m9.2928s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "contextual_retrieval_sources": []
+  },
+  {
+    "question": "What is the intuition behind top-p or nucleus sampling?",
+    "ground_truth_answer": "Top-p sampling selects the smallest set of tokens whose cumulative probability exceeds a threshold p and samples from that set.",
+    "naive_rag_answer": "The intuition behind top-p or nucleus sampling is to keep the top p percent of the probability mass, rather than a fixed number of words, to truncate the distribution and remove very unlikely words. This approach aims to balance diversity and quality by selecting words that are still probable enough, even if they are not the most probable.",
+    "contextual_retrieval_answer": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01km59edw5eaksgmrc9f2xwfrp` service tier `on_demand` on tokens per day (TPD): Limit 500000, Used 499916, Requested 471. Please try again in 1m6.873599999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "contextual_retrieval_sources": []
+  },
+  {
+    "question": "What training objective is commonly used for large language models?",
+    "ground_truth_answer": "Large language models are typically trained using cross-entropy loss to maximize the probability of the correct next token.",
+    "naive_rag_answer": "The training objective commonly used for large language models is to predict upcoming words. This is achieved by passing the model's output through a softmax to generate word probabilities.",
+    "contextual_retrieval_answer": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01km59edw5eaksgmrc9f2xwfrp` service tier `on_demand` on tokens per day (TPD): Limit 500000, Used 499909, Requested 463. Please try again in 1m4.2816s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "contextual_retrieval_sources": []
+  },
+  {
+    "question": "How does the KV cache improve inference efficiency?",
+    "ground_truth_answer": "The KV cache stores key and value vectors from previous tokens so they do not need to be recomputed during autoregressive generation.",
+    "naive_rag_answer": "The KV cache improves inference efficiency by storing computed key and value vectors in memory, allowing them to be retrieved from the cache instead of being recomputed when needed. This modification is shown in Fig. 8.18, which modifies Fig. 8.11 to illustrate the computation for a single new token.",
+    "contextual_retrieval_answer": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01km59edw5eaksgmrc9f2xwfrp` service tier `on_demand` on tokens per day (TPD): Limit 500000, Used 499903, Requested 580. Please try again in 1m23.4624s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "contextual_retrieval_sources": []
+  },
+  {
+    "question": "Why is attention sometimes called a token-mixing component?",
+    "ground_truth_answer": "Attention is called token-mixing because it integrates information from other tokens into the representation of the current token.",
+    "naive_rag_answer": "The attention function is called a token-mixing component because it mixes information from neighboring token streams into the current stream. This is shown in Figure 8.8, where information from Token A's residual stream is moved into Token B's residual stream.",
+    "contextual_retrieval_answer": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01km59edw5eaksgmrc9f2xwfrp` service tier `on_demand` on tokens per day (TPD): Limit 500000, Used 499896, Requested 514. Please try again in 1m10.848s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "contextual_retrieval_sources": []
+  },
+  {
+    "question": "What is a decoder-only transformer model?",
+    "ground_truth_answer": "A decoder-only transformer is a unidirectional model that predicts tokens autoregressively using only the decoder architecture.",
+    "naive_rag_answer": "A decoder-only model is roughly half of the encoder-decoder-only model for transformers. It is also referred to as a transformer used for unidirectional causal language models.",
+    "contextual_retrieval_answer": "A decoder-only transformer model is roughly half of the encoder-decoder-only model for transformers. It is used for unidirectional causal language models and constitutes the model used for this kind of language processing.",
+    "contextual_retrieval_sources": [
+      " terminological note before we conclude: You will sometimes see a trans-\nformer used for this kind of unidirectional causal language model called a decoder-\nonly model. This is because this model constitutes roughly half of the encoder-decoder-only\nmodel\ndecoder model for transformers that we’ll see how to apply to machine translation\nin Chapter 12. (Confusingly, the original introduction of the transformer had an\nencoder-decoder architecture, and it was only later that the standard paradigm for",
+      " make deeper and more powerful networks.\n• The input to a transformer is computed by adding an embedding (computed\nwith an embedding matrix) to a positional encoding that represents the se-\nquential position of the token in the window.\n• Language models can be built out of stacks of transformer blocks, with a\nlanguage model head at the top, which applies an unembedding matrix to\nthe output H of the top layer to generate the logits, which are then passed\nthrough a softmax to generate word probabi",
+      "\ni\ny1y2 y|V|…Token probabilities\nu1 u2 u|V|…\nsoftmax\nwi+1\nLayer L\nextra layer norm\nFigure 8.16 A transformer language model (decoder-only), stacking transformer blocks\nand mapping from an input token wi to a predicted next token wi+1.\nwords tend to be more creative and more diverse, but less factual and more likely to\nbe incoherent or otherwise low-quality.\n8.6.1 Top- k sampling\nTop-k sampling is a simple generalization of greedy decoding. Instead of choosingtop-k sampling\nthe single most probab"
+    ]
+  },
+  {
+    "question": "What is a limitation of absolute positional embeddings?",
+    "ground_truth_answer": "Absolute positional embeddings may generalize poorly to positions near the maximum sequence length because those positions appear less frequently in training.",
+    "naive_rag_answer": "A limitation of absolute positional embeddings is that the embeddings corresponding to the outer length limits may be poorly trained and may not generalize well during testing due to fewer training examples.",
+    "contextual_retrieval_answer": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01km59edw5eaksgmrc9f2xwfrp` service tier `on_demand` on tokens per day (TPD): Limit 500000, Used 499994, Requested 407. Please try again in 1m9.2928s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "contextual_retrieval_sources": []
+  },
+  {
+    "question": "What is the purpose of the logit lens tool?",
+    "ground_truth_answer": "The logit lens is an interpretability method that applies the final unembedding layer to intermediate activations to analyze what the model is predicting at different layers.",
+    "naive_rag_answer": "The logit lens tool is a way to visualize what the internal layers of the transformer might be representing. It does this by taking any vector from any layer, pretending it's the pre-final embedding, multiplying it by the unembedding layer to get logits, and computing a softmax to see the distribution over words that the vector might be representing.",
+    "contextual_retrieval_answer": "ERROR: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01km59edw5eaksgmrc9f2xwfrp` service tier `on_demand` on tokens per day (TPD): Limit 500000, Used 499987, Requested 515. Please try again in 1m26.7456s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "contextual_retrieval_sources": []
+  }
+]

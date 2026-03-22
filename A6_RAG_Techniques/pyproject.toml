@@ -3,14 +3,20 @@ name = "nlp-a6"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.11,<3.13"
 dependencies = [
-    "groq>=1.1.1",
+    "faiss-cpu>=1.12.0",
+    "groq>=0.30.0,<1.0.0",
     "langchain>=1.2.12",
     "langchain-community>=0.4.1",
-    "pandas>=3.0.1",
+    "langchain-groq>=1.0.0",
+    "langchain-text-splitters>=1.0.0",
+    "pandas>=1.5,<3",
     "python-dotenv>=1.1.1",
     "pypdf>=6.0.0",
+    "rouge-score>=0.1.2",
+    "sentence-transformers>=5.1.0",
+    "streamlit>=1.49.0",
     "torch>=2.10.0",
     "tqdm>=4.67.3",
     "transformers>=5.3.0",
