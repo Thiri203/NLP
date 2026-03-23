@@ -14,7 +14,7 @@ for answering questions about **Chapter 8: Transformers**.
 
   Method                 ROUGE-1   ROUGE-2   ROUGE-L
   ---------------------- --------- --------- ---------
-  Naive RAG              0.0000    0.0000    0.0000
+  Naive RAG              0.3943    0.1415    0.2871
   Contextual Retrieval   0.3908    0.1548    0.3059
 
 ## 🌐 Web Demo
