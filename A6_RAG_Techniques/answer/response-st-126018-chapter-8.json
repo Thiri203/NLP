@@ -2,7 +2,7 @@
   {
     "question": "What is the primary purpose of the self-attention mechanism in a transformer?",
     "ground_truth_answer": "Self-attention allows a model to build contextual representations of a token by integrating information from other tokens in the sequence.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "The primary purpose of the self-attention mechanism in a transformer is to build contextual representations of a token's meaning by attending to and integrating information from surrounding tokens, helping the model learn how tokens relate to each other over large spans.",
     "contextual_retrieval_answer": "The primary purpose of the self-attention mechanism in a transformer is to build contextual representations of a token's meaning by attending to and integrating information from surrounding tokens, helping the model learn how tokens relate to each other over large spans. This is achieved through the multi-head attention layer, which enables the model to learn relationships between tokens.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses the self-attention mechanism in the transformer architecture, specifically how it can be efficiently computed for an entire sequence of tokens in a single matrix operation. It provides a mathematical representation of the self-attention step, equations (8.33) and (8.34), which are used to compute the attention weights and output embedding for each token.\n\ns all qi· k j comparisons in a\nsingle matrix multiple.\nOnce we have this QK⊺ matrix, we can very efﬁciently scale these scores, take\nthe softmax, and then multiply the result by V resulting in a matrix of shape N× d:\na vector embedding representation for each token in the input. We’ve reduced the\nentire self-attention step for an entire sequence of N tokens for one head to the\nfollowing computation:\nhead = softmax\n(\nmask\n(QK⊺\n√dk\n))\nV (8.33)\nA = head WO (8.34)\n8.3 • P ARALLELIZING COMPUTATION US",
@@ -13,7 +13,7 @@
   {
     "question": "In the attention mechanism, what roles do the query, key, and value vectors play?",
     "ground_truth_answer": "The query represents the current token being compared, the key represents tokens used for similarity comparison, and the value contains the information that is weighted and combined in the output.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "The query, key, and value vectors play the following roles in the attention mechanism: \n\nThe query vector is used to match keys representing content in an associative memory. \nThe key vector represents content in an associative memory. \nThe value vector is used to compute the weighted sum that is our a3.",
     "contextual_retrieval_answer": "In the attention mechanism, the query, key, and value vectors play the following roles: \n\n- The query vector is used to compare with the keys to determine a similarity weight.\n- The key vector is used as a preceding input that is being compared to the current element.\n- The value vector is used as the value of a preceding element that gets weighted and summed up to compute the output for the current element.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses the core intuition of the transformer architecture, specifically the multi-head attention layer, and introduces the three different roles it plays: query, key, and value. It explains how these roles are captured through weight matrices WQ, WK, and WV, which project each input to different representations.\n\nbeing compared to the preceding inputs. We’ll refer to\nthis role as a query.query\n• In its role as a preceding input that is being compared to the current element\nto determine a similarity weight. We’ll refer to this role as a key.key\n• And ﬁnally, as a value of a preceding element that gets weighted and summedvalue\nup to compute the output for the current element.\nTo capture these three different roles, transformers introduce weight matrices\nWQ, WK, and WV. These weights will project each input",
@@ -24,7 +24,7 @@
   {
     "question": "Why is a scaling factor used in the dot product of query and key vectors?",
     "ground_truth_answer": "The dot product is scaled by the square root of the key dimension to prevent large values that could cause unstable gradients during training.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "Exponentiating large values can lead to numerical issues and loss of gradients during training. To avoid this, the dot product is scaled by a factor related to the size of the embeddings, specifically by dividing by the square root of the dimensionality of the query and key vectors (dk).",
     "contextual_retrieval_answer": "The answer is not found in the provided context.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses the scaling of the dot product in the multi-head attention layer to avoid numerical issues and loss of gradients during training, specifically highlighting the need to divide by the square root of the dimensionality of the query and key vectors.\n\nbitrarily large (positive or negative) value, and\nexponentiating large values can lead to numerical issues and loss of gradients during\ntraining. To avoid this, we scale the dot product by a factor related to the size of the\nembeddings, via dividing by the square root of the dimensionality of the query and\nkey vectors (dk). We thus replace the simpliﬁed Eq. 8.7 with Eq. 8.11. The ensuing\nsoftmax calculation resulting in αi j remains the same, but the output calculation for\nheadi is now based on ",
@@ -35,7 +35,7 @@
   {
     "question": "Why do transformers use multi-head attention instead of a single attention head?",
     "ground_truth_answer": "Multi-head attention allows the model to attend to different types of relationships in the sequence simultaneously using multiple attention heads.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "Transformers use multi-head attention instead of a single attention head because each head might be specialized to represent different linguistic relationships between context elements and the current token, or to look for particular kinds of patterns in the context. This allows for multiple purposes to be attended to in parallel.",
     "contextual_retrieval_answer": "The text doesn't explicitly state why transformers use multi-head attention instead of a single attention head. However, it mentions that each head might be attending to the context for different purposes, suggesting that multi-head attention allows the model to capture different aspects of the context.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses the multi-head attention layer, a key component of the transformer architecture, and how it allows the model to attend to different aspects of the context for different purposes.\n\non heads. The intuition is that each head\nmight be attending to the context for different purposes: heads might be special-\nized to represent different linguistic relationships between context elements and the\ncurrent token, or to look for particular kinds of patterns in the context.\nSo in multi-head attention we have A separate attention heads that reside inmulti-head\nattention\nparallel layers at the same depth in a model, each with its own set of parameters that\nallows the head to model differ",
@@ -46,7 +46,7 @@
   {
     "question": "What components are included in a standard transformer block?",
     "ground_truth_answer": "A transformer block includes a multi-head self-attention layer, a feedforward network, residual connections, and layer normalization.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "A standard transformer block consists of a residual stream with the input from the prior layer passed up to the next layer, and the output of different components added to it. These components include a multi-head attention layer followed by a feedforward layer, each preceded by layer normalizations.",
     "contextual_retrieval_answer": "A standard transformer block consists of a residual stream that includes a multi-head attention layer, a feedforward layer, and layer normalizations. These components are stacked to make deeper and more powerful networks.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses the core architecture of a transformer block, which is a key component of the transformer model, and how it processes input tokens by adding information from prior tokens weighted by their relevance.\n\n adding in vectors from prior tokens,\nweighted by how relevant they are for the processing of the current word.\n• A transformer block consists of a residual stream in which the input from\nthe prior layer is passed up to the next layer, with the output of different com-\nponents added to it. These components include a multi-head attention layer\nfollowed by a feedforward layer, each preceded by layer normalizations.\nTransformer blocks are stacked to make deeper and more powerful networks.\n• The inp",
@@ -57,7 +57,7 @@
   {
     "question": "What is the residual stream in a transformer block?",
     "ground_truth_answer": "The residual stream is the pathway where token representations are passed through layers while each component reads from and adds its output back to the stream.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "The residual stream in a transformer block is a single stream of d-dimensional representations for a token position, starting with the original input vector. It passes the input from the prior layer up to the next layer, with the output of different components added to it. These components include a multi-head attention layer followed by a feedforward layer, each preceded by layer normalizations.",
     "contextual_retrieval_answer": "The residual stream in a transformer block is a single stream of d-dimensional representations for a token position, starting with the original input vector and passing through various components. It represents the current or next token at different stages of the process, with the current token represented at earlier transformer blocks and the following token represented at the highest transformer blocks.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses the architecture of a transformer decoder for language modeling, specifically focusing on the residual stream viewpoint of a transformer block, which views the processing of an individual token as a single stream of representations.\n\nyer norm”).\nFig. 8.7 illustrates a transformer block, sketching a common way of thinking\nabout the block that is called the residual stream (Elhage et al., 2021). In the resid-residual stream\nual stream viewpoint, we consider the processing of an individual token i through\nthe transformer block as a single stream of d-dimensional representations for token\nposition i. This residual stream starts with the original input vector, and the various\ncomponents read their input from the residual stream a",
@@ -68,7 +68,7 @@
   {
     "question": "How are positional embeddings combined with token embeddings in a transformer?",
     "ground_truth_answer": "Positional embeddings are added to token embeddings so the model can represent both the token identity and its position in the sequence.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "In a transformer, the input X is computed by adding an embedding (computed with an embedding matrix) to a positional encoding that represents the sequential position of the token in the window. This means that positional embeddings are combined with token embeddings by addition.",
     "contextual_retrieval_answer": "To combine positional embeddings with token embeddings in a transformer, we add the two embeddings together. The individual token and position embeddings are both of size [1×d], so their sum is also [1×d], which serves as the input for further processing.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses the architecture of a transformer decoder for language modeling, specifically focusing on how input tokens are embedded and passed through a series of transformer blocks, including the multi-head attention layer, feedforward networks, and layer normalization. It also touches on the concept of positional embeddings, which are used to represent the position of each token in the input sequence.\n\ng to W by the embedding matrix E.\nThese token embeddings are not position-dependent. To represent the position\nof each token in the sequence, we combine these token embeddings with positional\nembeddings speciﬁc to each position in an input sequence.positional\nembeddings\nWhere do we get these positional embeddings? The simplest method, called\nabsolute position, is to start with randomly initialized embeddings correspondingabsolute\nposition\nto each possible input position up to some maximum length",
@@ -79,7 +79,7 @@
   {
     "question": "What is the architecture of the feedforward layer in a transformer block?",
     "ground_truth_answer": "The feedforward layer is a two-layer fully connected network applied independently to each token representation.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "The architecture of the feedforward layer in a transformer block is a fully-connected 2-layer network, also known as one hidden layer, with two weight matrices.",
     "contextual_retrieval_answer": "The feedforward layer in a transformer block is a fully-connected 2-layer network, also known as a hidden layer, with two weight matrices.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses the detailed architecture of a transformer block, specifically focusing on the feedforward layer and layer norm computations, which are crucial components of the transformer model.\n\nhe ﬁrst\nfeedforward layer, and the output of those is added back into the residual, and we’ll\nuse hi to refer to the resulting output of the transformer block for token i.\nWe’ve already seen the attention layer, so let’s now introduce the feedforward\nand layer norm computations in the context of processing a single input xi at token\n10 CHAPTER 8 • T RANSFORMERS\nposition i.\nFeedforward layer The feedforward layer is a fully-connected 2-layer network,\ni.e., one hidden layer, two weight matrices, a",
@@ -90,7 +90,7 @@
   {
     "question": "What is the purpose of layer normalization in transformers?",
     "ground_truth_answer": "Layer normalization stabilizes training by normalizing activations so they have a consistent scale across the network.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "The purpose of layer normalization in transformers is to keep the values of a hidden layer in a range that facilitates gradient-based training, improving training performance in deep neural networks.",
     "contextual_retrieval_answer": "Layer normalization is used to improve training performance in deep neural networks by keeping the values of a hidden layer in a range that facilitates gradient-based training. It normalizes the vector components to have zero mean and a standard deviation of one, which helps in stabilizing the training process.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses the concept of layer normalization, specifically layer norm, which is a technique used to improve training performance in deep neural networks by normalizing the values of a hidden layer.\n\nansformer block we normalize the vector (Ba\net al., 2016). This process, called layer norm (short for layer normalization), is onelayer norm\nof many forms of normalization that can be used to improve training performance\nin deep neural networks by keeping the values of a hidden layer in a range that\nfacilitates gradient-based training.\nLayer norm is a variation of the z-score from statistics, applied to a single vec-\ntor in a hidden layer. That is, the term layer norm is a bit confusing; layer n",
@@ -101,7 +101,7 @@
   {
     "question": "Why is masking used in the self-attention of causal language models?",
     "ground_truth_answer": "Masking prevents tokens from attending to future tokens so the model only uses previous context when predicting the next token.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "Masking is used in the self-attention of causal language models because the calculation of QK⊺ results in a score for each query value to every key value, including those that follow the query, which is inappropriate in language modeling. This is because knowing the future input can make it easy to guess the next word.",
     "contextual_retrieval_answer": "Masking is used in the self-attention of causal language models to prevent the model from accessing future tokens when predicting the next word in a sequence. This is because the model should only have access to prior words, not future words, in order to make accurate predictions.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses the masking mechanism used in self-attention computation to prevent the model from accessing future tokens when predicting the next word in a sequence.\n\nhead WO (8.34)\n8.3 • P ARALLELIZING COMPUTATION USING A SINGLE MATRIX X 13\nMasking out the future You may have noticed that we introduced a mask function\nin Eq. 8.34 above. This is because the self-attention computation as we’ve described\nit has a problem: the calculation of QK⊺ results in a score for each query value to\nevery key value, including those that follow the query . This is inappropriate in the\nsetting of language modeling: guessing the next word is pretty simple if you already\nknow i",
@@ -112,7 +112,7 @@
   {
     "question": "What components make up the language modeling head?",
     "ground_truth_answer": "The language modeling head consists of a linear projection called the unembedding layer followed by a softmax to produce probabilities over the vocabulary.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "The language modeling head is the additional neural circuitry we add on top of the basic transformer architecture when we apply pretrained transformer models to various tasks.",
     "contextual_retrieval_answer": "The language modeling head consists of a linear unembedding matrix and a softmax over the vocabulary. These components are used to generate a distribution over possible next tokens by passing the output embedding through them.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses how transformer models can be applied to various tasks, specifically highlighting the language modeling head as the necessary circuitry for language modeling.\n\nrans-\nformer models to various tasks. The language modeling head is the circuitry we\nneed to do language modeling.\nRecall that language models, from the simple n-gram models of Chapter 3 through\nthe feedforward and RNN language models of Chapter 6 and Chapter 13, are word\npredictors. Given a context of words, they assign a probability to each possible next\nword. For example, if the preceding context is “Thanks for all the” and we want to\nknow how likely the next word is “ﬁsh” we would compute:\nP",
@@ -123,7 +123,7 @@
   {
     "question": "What is weight tying in transformer language models?",
     "ground_truth_answer": "Weight tying refers to sharing the same weight matrix between the token embedding layer and the final unembedding layer.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "Weight tying is a technique used in transformer language models where the linear layer's matrix is tied to the transpose of the embedding matrix E. This means the same weights are used for two different matrices in the model.",
     "contextual_retrieval_answer": "Weight tying is a technique used in transformer language models where the same weights are used for two different matrices in the model. Specifically, in the provided context, the weight tying is used to tie the linear layer's matrix to the transpose of the embedding matrix E.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses the architecture of a transformer decoder for language modeling, specifically focusing on the residual stream for processing an input token and the multi-head attention layer that distinguishes the transformer from feedforward layers.\n\nor each of the|V| possible words in the vocabularyV . The logit vector\nu is thus of dimensionality [1×|V|].\nThis linear layer can be learned, but more commonly we tie this matrix to (the\ntranspose of) the embedding matrix E. Recall that in weight tying , we use theweight tying\nsame weights for two different matrices in the model. Thus at the input stage of the\ntransformer the embedding matrix (of shape[|V|× d]) is used to map from a one-hot\nvector over the vocabulary (of shape [1×|V|]) to an emb",
@@ -134,7 +134,7 @@
   {
     "question": "How does top-k sampling work during text generation?",
     "ground_truth_answer": "Top-k sampling restricts the probability distribution to the k most likely tokens and randomly samples the next token from that subset.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "Top-k sampling works by first truncating the distribution to the top k most likely words, renormalizing their probabilities to produce a legitimate distribution, and then randomly sampling from within these k words according to their renormalized probabilities. This process is repeated for each word in the vocabulary, with the language model computing the likelihood of each word given the context. The top k words are then randomly selected based on their probabilities.",
     "contextual_retrieval_answer": "During text generation, top-k sampling works by first truncating the distribution to the top k most likely words, renormalizing to produce a legitimate probability distribution, and then randomly sampling from within these k words according to their renormalized probabilities. This process is repeated for each word in the vocabulary, with the model predicting the next token based on the context provided by the previous tokens.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses the process of top-k sampling, a method used to generate a single word from a language model's output distribution by selecting the top k most likely words and randomly sampling from them.\n\nd of choosingtop-k sampling\nthe single most probable word to generate, we ﬁrst truncate the distribution to the\ntop k most likely words, renormalize to produce a legitimate probability distribution,\nand then randomly sample from within thesek words according to their renormalized\nprobabilities. More formally:\n1. Choose in advance a number of words k\n2. For each word in the vocabulary V , use the language model to compute the\nlikelihood of this word given the context p(wt|w<t )\n3. Sort the words ",
@@ -145,7 +145,7 @@
   {
     "question": "What is the intuition behind top-p or nucleus sampling?",
     "ground_truth_answer": "Top-p sampling selects the smallest set of tokens whose cumulative probability exceeds a threshold p and samples from that set.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "The intuition behind top-p or nucleus sampling is to keep the top p percent of the probability mass, rather than a fixed number of words, to truncate the distribution and remove very unlikely words. This approach aims to balance diversity and quality by selecting words that are still probable enough, even if they are not the most probable.",
     "contextual_retrieval_answer": "The intuition behind top-p or nucleus sampling is to keep the top p percent of the probability mass, rather than a fixed number of words (k), to truncate the distribution and remove very unlikely words. This approach aims to preserve the most probable words while allowing for more diverse text generation.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses the benefits and limitations of top-k sampling, a technique used in language modeling to generate diverse text, and introduces nucleus or top-p sampling as an alternative approach.\n\nnumber than 1 leads us to sometimes select a word which is not necessarily the most\nprobable, but is still probable enough, and whose choice results in generating more\ndiverse but still high-enough-quality text.\n8.6.2 Nucleus or top- p sampling\nOne problem with top-k sampling is that k is ﬁxed, but the shape of the probability\ndistribution over words differs in different contexts. If we set k = 10, sometimes\nthe top 10 words will be very likely and include most of the probability mass, but\nother",
@@ -156,7 +156,7 @@
   {
     "question": "What training objective is commonly used for large language models?",
     "ground_truth_answer": "Large language models are typically trained using cross-entropy loss to maximize the probability of the correct next token.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "The training objective commonly used for large language models is to predict upcoming words. This is achieved by passing the model's output through a softmax to generate word probabilities.",
     "contextual_retrieval_answer": "The training objective commonly used for large language models is predicting upcoming words, as mentioned in the context of fine-tuning.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses the challenges of fine-tuning large language models, specifically the issue of parameter efficiency and the difficulties that arise when trying to train a model with a vast number of parameters.\n\n Parameter Efﬁcient Fine Tuning\nAs we mentioned above, it’s very common to take a language model and give it more\ninformation about a new domain by ﬁnetuning it (continuing to train it to predict\nupcoming words) on some additional data.\nFine-tuning can be very difﬁcult with very large language models, because there\nare enormous numbers of parameters to train; each pass of batch gradient descent\nhas to backpropagate through many many huge layers. This makes ﬁnetuning huge\nlanguage models extremel",
@@ -167,7 +167,7 @@
   {
     "question": "How does the KV cache improve inference efficiency?",
     "ground_truth_answer": "The KV cache stores key and value vectors from previous tokens so they do not need to be recomputed during autoregressive generation.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "The KV cache improves inference efficiency by storing computed key and value vectors in memory, allowing them to be retrieved from the cache instead of being recomputed when needed. This modification is shown in Fig. 8.18, which modifies Fig. 8.11 to illustrate the computation for a single new token.",
     "contextual_retrieval_answer": "The KV cache improves inference efficiency by storing key and value vectors in memory, allowing them to be retrieved from the cache instead of being recomputed when needed. This enables faster computation when processing new tokens, as shown in Fig. 8.18.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses the limitations of the transformer architecture in inference mode, specifically the inefficiency of computing the attention vector in parallel, and introduces the KV cache as a solution to this problem.\n\nhe loss would be if we were to add more\ndata or increase model size. Other aspects of scaling laws can also tell us how much\ndata we need to add when scaling up a model.\n8.8.2 KV Cache\nWe saw in Fig. 8.11 and in Eq. 8.34 (repeated below) how the attention vector can\nbe very efﬁciently computed in parallel for training, via two matrix multiplications:\nA = softmax\n(QK⊺\n√dk\n)\nV (8.53)\nUnfortunately we can’t do quite the same efﬁcient computation in inference as\nin training. That’s because at infere",
@@ -178,7 +178,7 @@
   {
     "question": "Why is attention sometimes called a token-mixing component?",
     "ground_truth_answer": "Attention is called token-mixing because it integrates information from other tokens into the representation of the current token.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "The attention function is called a token-mixing component because it mixes information from neighboring token streams into the current stream. This is shown in Figure 8.8, where information from Token A's residual stream is moved into Token B's residual stream.",
     "contextual_retrieval_answer": "Attention is sometimes called a token-mixing component because it moves information from the residual stream of a neighboring token into the current stream, augmenting the stream at one token position with information from another token position. This is shown in Figure 8.8, where information from Token A's residual stream is moved into Token B's residual stream.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses the core intuition of the transformer architecture, specifically the multi-head attention layer, which allows the model to build contextual representations of a token's meaning by attending to and integrating information from surrounding tokens.\n\nthe attention func-\ntion the token-mixing component of the architecture, because it mixes informationtoken-mixing\nfrom neighboring token streams into the current stream.\nToken A\nresidual\n stream\nToken B\nresidual \nstream\nFigure 8.8 An attention head can move information from token A’s residual stream into\ntoken B’s residual stream.\nCrucially, the input and output dimensions of transformer blocks are matched so\nthey can be stacked. Each token vectorxi at the input to the block has dimensionality\nd",
@@ -189,7 +189,7 @@
   {
     "question": "What is a decoder-only transformer model?",
     "ground_truth_answer": "A decoder-only transformer is a unidirectional model that predicts tokens autoregressively using only the decoder architecture.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "A decoder-only model is roughly half of the encoder-decoder-only model for transformers. It is also referred to as a transformer used for unidirectional causal language models.",
     "contextual_retrieval_answer": "A decoder-only model is a type of transformer used for unidirectional causal language modeling, which constitutes roughly half of the encoder-decoder-only model for transformers. This model is also referred to as a transformer decoder for language modeling.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses the architecture of a transformer decoder for language modeling, specifically focusing on the residual stream for processing an input token and the multi-head attention layer that distinguishes the transformer from other models.\n\n terminological note before we conclude: You will sometimes see a trans-\nformer used for this kind of unidirectional causal language model called a decoder-\nonly model. This is because this model constitutes roughly half of the encoder-decoder-only\nmodel\ndecoder model for transformers that we’ll see how to apply to machine translation\nin Chapter 12. (Confusingly, the original introduction of the transformer had an\nencoder-decoder architecture, and it was only later that the standard paradigm for",
@@ -200,7 +200,7 @@
   {
     "question": "What is a limitation of absolute positional embeddings?",
     "ground_truth_answer": "Absolute positional embeddings may generalize poorly to positions near the maximum sequence length because those positions appear less frequently in training.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "A limitation of absolute positional embeddings is that the embeddings corresponding to the outer length limits may be poorly trained and may not generalize well during testing due to fewer training examples.",
     "contextual_retrieval_answer": "The answer is not found in the provided context.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses the architecture of a transformer decoder for language modeling, specifically focusing on how input tokens are embedded and passed through a series of transformer blocks, including the multi-head attention layer, feedforward networks, and layer normalization. It also touches on the concept of positional embeddings, which are used to represent the position of each token in the input sequence.\n\ng to W by the embedding matrix E.\nThese token embeddings are not position-dependent. To represent the position\nof each token in the sequence, we combine these token embeddings with positional\nembeddings speciﬁc to each position in an input sequence.positional\nembeddings\nWhere do we get these positional embeddings? The simplest method, called\nabsolute position, is to start with randomly initialized embeddings correspondingabsolute\nposition\nto each possible input position up to some maximum length",
@@ -211,7 +211,7 @@
   {
     "question": "What is the purpose of the logit lens tool?",
     "ground_truth_answer": "The logit lens is an interpretability method that applies the final unembedding layer to intermediate activations to analyze what the model is predicting at different layers.",
-    "naive_rag_answer": "",
+    "naive_rag_answer": "The logit lens tool is a way to visualize what the internal layers of the transformer might be representing. It does this by taking any vector from any layer, pretending it's the pre-final embedding, multiplying it by the unembedding layer to get logits, and computing a softmax to see the distribution over words that the vector might be representing.",
     "contextual_retrieval_answer": "The logit lens tool is a technique used to visualize the internal representations of a transformer model by multiplying a vector from any layer by the unembedding layer to get logits, and then computing a softmax to see the distribution over words that the vector might be representing. This can be a useful tool for understanding how the model is processing input data.",
     "contextual_retrieval_sources": [
       "This chunk from Chapter 8: Transformers discusses the process of visualizing the internal representations of a transformer model by multiplying the pre-final embedding by the unembedding layer to get logits, and then computing a softmax to see the distribution over words that the vector might be representing. This technique, called the \"logit lens,\" can be a useful tool for understanding how the model is processing input data.\n\n preﬁnal embedding, simply multiply it by the unembedding\nlayer to get logits, and compute a softmax to see the distribution over words that\nthat vector might be representing. This can be a useful window into the internal\nrepresentations of the model. Since the network wasn’t trained to make the internal\nrepresentations function in this way, the logit lens doesn’t always work perfectly, but\nthis can still be a useful trick to help us visualize the internal layers of a transformer.\n26 CHAPTER 8 •",
