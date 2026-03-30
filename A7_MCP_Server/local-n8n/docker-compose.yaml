@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    restart: always
+    ports:
+      - "5678:5678"
+    environment:
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=db
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_DATABASE=${DB_NAME}
+      - DB_POSTGRESDB_USER=${DB_USER}
+      - DB_POSTGRESDB_PASSWORD=${DB_PASSWORD}
+
+      - N8N_HOST=nondepletory-devon-demurely.ngrok-free.dev
+      - N8N_PROTOCOL=https
+      - N8N_SECURE_COOKIE=false
+      - WEBHOOK_URL=https://nondepletory-devon-demurely.ngrok-free.dev
+      - N8N_EDITOR_BASE_URL=https://nondepletory-devon-demurely.ngrok-free.dev
+
+      - NODE_ENV=production
+      - GENERIC_TIMEZONE=Asia/Bangkok
+      - TZ=Asia/Bangkok
+    volumes:
+      - ./n8n_data:/home/node/.n8n
+    depends_on:
+      db:
+        condition: service_healthy
