@@ -1,16 +1,16 @@
-# 🤖 NLP Assignment: AI Agent with n8n, MCP, and Telegram Integration
+# NLP Assignment: AI Agent with n8n, MCP, and Telegram Integration
 
-## 📌 Overview
+## Overview
 
-This project demonstrates an AI-powered workflow using **n8n**,
-integrating: - 🤖 AI Agent (LLM-based) - 🔌 MCP (Model Context Protocol)
-Server & Client - 📅 Google Calendar API - 💬 Telegram Bot Interface
+This project demonstrates an AI-powered workflow using n8n,
+integrating: - AI Agent (LLM-based) - MCP (Model Context Protocol)
+Server & Client - Google Calendar API - Telegram Bot Interface
 
-## 🏗️ System Architecture
+## System Architecture
 
 User (Telegram) → n8n Workflow → AI Agent → MCP Tools / Google Calendar
 
-## ⚙️ Components
+## Components
 
 ### n8n
 
@@ -31,7 +31,7 @@ Tools: - Calculator - Date & Time - Code Tool
 
 ![Telegram](assets/tele.png)
 
-## 🚀 Features
+## Features
 
 ### Calculator
 
@@ -49,17 +49,17 @@ Example: Create a calendar event with title "Literature Review", start
 ![Calendar](assets/4%20event%20calendar.png) ![Telegram
 Output](assets/4%20event%20final.png)
 
-## ⚠️ Challenges
+## Challenges
 
--   Duplicate executions → fixed by removing duplicate models
--   Tool schema mismatch → fixed input fields
--   Model deprecation → switched models
+-   Duplicate executions fixed by removing duplicate models
+-   Tool schema mismatch fixed by aligning input fields
+-   Model deprecation fixed by switching models
 
-## 📌 Conclusion
+## Conclusion
 
-This project shows real-world AI workflow integration using n8n and
+This project shows practical AI workflow integration using n8n and
 external tools.
 
-## 👩‍💻 Author
+## Author
 
 Thiri Shin Thant
